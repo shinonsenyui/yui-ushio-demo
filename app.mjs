@@ -12,7 +12,7 @@ function render(changes={},scroll=false){
  const heading=doc.querySelector('#hero-title');heading.textContent=state.headline;
  const grid=doc.querySelector('#service-grid');const first=grid.querySelector(`[data-category="${state.first}"]`);const order=['wedding','coming','children'];[state.first,...order.filter(x=>x!==state.first)].forEach(category=>grid.append(grid.querySelector(`[data-category="${category}"]`)));
  const target=changes.first?first:changes.headline?heading:doc.querySelector('.hero');
- if(scroll){target.classList.remove('change-flash');void target.offsetWidth;target.classList.add('change-flash');target.scrollIntoView({block:changes.first?'center':'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});}
+ if(scroll){target.classList.remove('change-flash');void target.offsetWidth;target.classList.add('change-flash');iframe.contentWindow.scrollTo({top:Math.max(0,target.getBoundingClientRect().top+iframe.contentWindow.scrollY-35),behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});}
  $('#undo').disabled=!history.length;$('#reset').disabled=JSON.stringify(state)===JSON.stringify(initialState);$('#revision').textContent=revisions?`EDIT ${String(revisions).padStart(2,'0')}`:'ORIGINAL';
  $('#preview-status').textContent=revisions?'変更を反映しました · この見本だけに適用されます':'変更は、この画面の見本だけに反映されます';
 }
@@ -27,8 +27,9 @@ function submit(text){
 }
 function undo(){if(!history.length){message('まだ戻せる変更がありません。');return;}state=history.pop();revisions++;render({},false);message('ひとつ前の状態に戻しました。');}
 function reset(){if(JSON.stringify(state)===JSON.stringify(initialState)){message('すでに最初の状態です。');return;}history.push({...state});if(history.length>20)history.shift();state={...initialState};revisions++;render({},false);iframe.contentWindow.scrollTo({top:0,behavior:'smooth'});message('配色・見出し・掲載順を最初の状態に戻しました。');}
-iframe.addEventListener('load',()=>{ready=true;render();});
-if(iframe.contentDocument?.readyState==='complete'&&iframe.contentDocument.querySelector('#hero-title')){ready=true;render();}
+function initialize(){ready=true;render();iframe.contentWindow.scrollTo({top:0,behavior:'instant'});}
+iframe.addEventListener('load',initialize);
+if(iframe.contentDocument?.readyState==='complete'&&iframe.contentDocument.querySelector('#hero-title'))initialize();
 $('#chat-form').addEventListener('submit',event=>{event.preventDefault();const value=$('#prompt').value;submit(value);$('#prompt').value='';});
 $('#prompt').addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey&&!event.isComposing&&event.keyCode!==229){event.preventDefault();$('#chat-form').requestSubmit();}});
 document.querySelectorAll('[data-prompt]').forEach(button=>button.addEventListener('click',()=>submit(button.dataset.prompt)));

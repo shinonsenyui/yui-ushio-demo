@@ -28,4 +28,9 @@ Yuiが制作する営業・提案用のデモです。公式サイトではあ�
 
 ## 公開状態
 
-実装中。公開とブラウザでの確認が済み次第更新します。
+- 公開URL: https://shinonsenyui.github.io/yui-ushio-demo/
+- リポジトリ: https://github.com/shinonsenyui/yui-ushio-demo
+- 公開方式: GitHub Pages / main / ルート
+- 2026-11-10: 公開HTTP 200、画像読込み、見出し・配色・掲載順の変更、取り消し、初期化、未対応指示の案内、HTML文字列の安全な表示をChromeで確認。
+- スマートフォン幅390pxで、ページと見本の横はみ出しがないことを確認。
+- 指示の解釈に関する5件の自動テストが成功。
