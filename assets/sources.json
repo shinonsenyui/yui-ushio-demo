@@ -1,0 +1,30 @@
+[
+  {
+    "file": "wedding.jpg",
+    "source": "https://images.unsplash.com/photo-1519741497674-611481863552",
+    "image_url": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "illustrative demo image, not actual client portfolio"
+  },
+  {
+    "file": "ceremony.jpg",
+    "source": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
+    "image_url": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "illustrative demo image, not actual client portfolio"
+  },
+  {
+    "file": "portrait.jpg",
+    "source": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
+    "image_url": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "illustrative demo image, not actual client portfolio"
+  },
+  {
+    "file": "family.jpg",
+    "source": "https://images.unsplash.com/photo-1519689680058-324335c77eba",
+    "image_url": "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1600&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "illustrative demo image, not actual client portfolio"
+  }
+]
